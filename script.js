@@ -227,7 +227,7 @@ document.querySelector('form#richiesta').addEventListener('submit', function (ev
 //--------------------------------------------------------------------------------------------------------------
 function modificaTesto(nomeMostro,punteggioMostro) {
     var contenutoHTML = document.getElementById('risultatoM').innerHTML;
-    console.log(contenutoHTML); // Questo stamperà "Contenuto esistente" nella console
+    console.log("sono dentro la funzione modificaTesto"); // Questo stamperà "Contenuto esistente" nella console
     
     document.getElementById('risultatoM').innerHTML = nomeMostro + " Inserito con Successo con Pe = " + punteggioMostro;
 
