@@ -118,11 +118,15 @@ function determinaDifficolta(PEperMostri,PEmedioF, PEmedioM, PEmedioD, PEmedioL)
 
 function calcolaPeM(numeroPG) {
 
-    var nomeMostro1 = document.getElementById('nome_mostro1').value;
+    var selectNomeMostro1 = document.getElementById('nome_mostro1');
+    var selectNomeMostro2 = document.getElementById('nome_mostro2');
+    var selectNomeMostro3 = document.getElementById('nome_mostro3');
+    var nomeMostro1 = selectNomeMostro1.options[selectNomeMostro1.selectedIndex].textContent;
+    console.log("Nome mostro primo= " + nomeMostro1);
     var numeroMostri1 = parseInt(document.getElementById("numero_mostri1").value) ; // Converti la stringa in numero
-    var nomeMostro2 = document.getElementById("nome_mostro2").value || 0;
+    var nomeMostro2 = selectNomeMostro2.options[selectNomeMostro2.selectedIndex].textContent|| 0;
     var numeroMostri2 = parseInt(document.getElementById("numero_mostri2").value) || 0 ; // Converti la stringa in numero
-    var nomeMostro3 = document.getElementById("nome_mostro3").value || 0;
+    var nomeMostro3 = selectNomeMostro3.options[selectNomeMostro3.selectedIndex].textContent|| 0;
     var numeroMostri3 = parseInt(document.getElementById("numero_mostri3").value) || 0 ; // Converti la stringa in numero
 
     var PEperMostro1 = mostri[nomeMostro1] * numeroMostri1;
@@ -268,3 +272,47 @@ document.getElementById('modifica').addEventListener('submit', function (event) 
     // Aggiorna la visualizzazione dei mostri
     visualizzaMostri();
 });
+
+//---------------------------------------------------------------------------------------------------------
+
+function popolaSelectMostri() {
+    // Itera attraverso tutti gli input dei nomi dei mostri
+    for (var i = 1; i <= 3; i++) {
+        var selectId = 'nome_mostro' + i; // Genera l'id del select corrente
+        var selectMostri = document.getElementById(selectId);
+
+        // Pulisce il select precedente
+        selectMostri.innerHTML = '';
+
+        // Aggiunge un'opzione vuota o con valore nullo
+        var optionNull = document.createElement('option');
+        optionNull.textContent = 'Nessun mostro';
+        optionNull.value = ''; // Puoi impostare il valore dell'opzione come vuoto o null
+        selectMostri.appendChild(optionNull);
+
+        // Itera attraverso i mostri nel database e crea un'opzione per ciascuno
+        for (var nomeMostro in mostri) {
+            if (mostri.hasOwnProperty(nomeMostro)) {
+                var option = document.createElement('option');
+                option.textContent = nomeMostro;
+                option.value = mostri[nomeMostro]; // Puoi impostare il valore dell'opzione con il punteggio del mostro se necessario
+                selectMostri.appendChild(option);
+            }
+        }
+
+        // Event listener per il cambio del select
+        selectMostri.addEventListener('change', function(event) {
+            var selectedOption = this.options[this.selectedIndex];
+            if (selectedOption.value) {
+                // Se il valore dell'opzione è valido, puoi fare qualcosa con esso
+                console.log('Hai selezionato il mostro ' + selectedOption.textContent + ' con punteggio ' + selectedOption.value);
+            } else {
+                // L'utente ha selezionato l'opzione vuota o con valore nullo
+                console.log('Nessun mostro selezionato');
+            }
+        });
+    }
+}
+
+// Chiamata alla funzione per popolare i select all'avvio
+popolaSelectMostri();
