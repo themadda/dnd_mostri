@@ -231,7 +231,7 @@ function modificaTesto(nomeMostro,punteggioMostro) {
     
     document.getElementById('risultatoM').innerHTML = nomeMostro + " Inserito con Successo con Pe = " + punteggioMostro;
 
-    
+    alert("Mostro inserito con successo!");
     
 }
 
