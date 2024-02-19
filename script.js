@@ -3,8 +3,78 @@ var mostri = {
     "Goblin": 50,
     "Orco": 100,
     "Drago Rosso": 5900,
+    
      // Aggiungi altri mostri qui...
 };
+
+// Funzione per aggiungere un mostro al database
+function aggiungiMostro(nome, punteggio) {
+    mostri[nome] = punteggio;
+    // Salva il database aggiornato
+    salvaMostri();
+}
+
+// Funzione per salvare il database dei mostri
+function salvaMostri() {
+    // Converte l'oggetto mostri in una stringa JSON
+    var mostriJSON = JSON.stringify(mostri);
+    // Salva la stringa JSON in localStorage con la chiave "mostri"
+    localStorage.setItem("mostri", mostriJSON);
+}
+
+// Funzione per caricare i dati dei mostri dal localStorage
+function caricaMostri() {
+    // Recupera la stringa JSON dei mostri dal localStorage
+    var mostriJSON = localStorage.getItem("mostri");
+    // Se ci sono dati salvati, converte la stringa JSON in un oggetto JavaScript e aggiorna l'oggetto mostri
+    if (mostriJSON) {
+        mostri = JSON.parse(mostriJSON);
+    }
+}
+
+// Carica i dati dei mostri al caricamento della pagina
+caricaMostri();
+
+// Event listener per il form di aggiunta del mostro
+document.getElementById('Agg').addEventListener('submit', function (event) {
+    event.preventDefault(); // Impedisce il ricaricamento della pagina
+
+    // Ottiene i valori inseriti dall'utente
+    var nomeMostro = document.getElementById('NomeMostro').value;
+    var punteggioMostro = parseInt(document.getElementById('PeMostro').value);
+
+    // Aggiunge il mostro al database
+    aggiungiMostro(nomeMostro, punteggioMostro);
+
+    // Aggiorna la visualizzazione dei mostri
+    visualizzaMostri();
+});
+
+// Funzione per visualizzare i mostri nel database
+function visualizzaMostri() {
+    // Ottiene l'elemento HTML in cui visualizzare i mostri
+    var listaMostriDiv = document.getElementById('lista_mostri');
+    listaMostriDiv.innerHTML = ''; // Pulisce il contenuto precedente
+
+    // Itera attraverso i mostri nel database e li aggiunge alla lista HTML
+    for (var nomeMostro in mostri) {
+        if (mostri.hasOwnProperty(nomeMostro)) {
+            var punteggioMostro = mostri[nomeMostro];
+            var listItem = document.createElement('li');
+            listItem.textContent = nomeMostro + ': ' + punteggioMostro;
+            listaMostriDiv.appendChild(listItem);
+        }
+    }
+}
+
+// Visualizza i mostri al caricamento della pagina
+visualizzaMostri();
+
+
+
+
+
+
 
 function determinaDifficolta(PEperMostri,PEmedioF, PEmedioM, PEmedioD, PEmedioL){
     var diffic;
@@ -49,15 +119,15 @@ function determinaDifficolta(PEperMostri,PEmedioF, PEmedioM, PEmedioD, PEmedioL)
 function calcolaPeM(numeroPG) {
 
     var nomeMostro1 = document.getElementById('nome_mostro1').value;
-    var numeroMostri1 = parseInt(document.getElementById("numero_mostri1").value); // Converti la stringa in numero
-    var nomeMostro2 = document.getElementById("nome_mostro2").value;
-    var numeroMostri2 = parseInt(document.getElementById("numero_mostri2").value); // Converti la stringa in numero
-    var nomeMostro3 = document.getElementById("nome_mostro3").value;
-    var numeroMostri3 = parseInt(document.getElementById("numero_mostri3").value); // Converti la stringa in numero
+    var numeroMostri1 = parseInt(document.getElementById("numero_mostri1").value) ; // Converti la stringa in numero
+    var nomeMostro2 = document.getElementById("nome_mostro2").value || 0;
+    var numeroMostri2 = parseInt(document.getElementById("numero_mostri2").value) || 0 ; // Converti la stringa in numero
+    var nomeMostro3 = document.getElementById("nome_mostro3").value || 0;
+    var numeroMostri3 = parseInt(document.getElementById("numero_mostri3").value) || 0 ; // Converti la stringa in numero
 
     var PEperMostro1 = mostri[nomeMostro1] * numeroMostri1;
-    var PEperMostro2 = mostri[nomeMostro2] * numeroMostri2;
-    var PEperMostro3 = mostri[nomeMostro3] * numeroMostri3;
+    var PEperMostro2 = nomeMostro2 ? (mostri[nomeMostro2] || 0) * numeroMostri2 : 0;
+    var PEperMostro3 = nomeMostro3 ? (mostri[nomeMostro3] || 0) * numeroMostri3 : 0;
     var numeroMostri = numeroMostri1 + numeroMostri2 + numeroMostri3;
 
        var PEperMostri = PEperMostro1 + PEperMostro2 +PEperMostro3
@@ -131,7 +201,7 @@ function calcolaPeP(livelloPG, numeroPG) {
     return [PEmedioF, PEmedioM, PEmedioD, PEmedioL];
 }
 
-document.querySelector('form').addEventListener('submit', function (event) {
+document.querySelector('form#richiesta').addEventListener('submit', function (event) {
     event.preventDefault(); // Questo impedisce al form di inviare i dati e ricaricare la pagina
 
     var livelloPG = parseInt(document.getElementById("livello_pg").value);
