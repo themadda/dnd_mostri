@@ -48,6 +48,7 @@ document.getElementById('Agg').addEventListener('submit', function (event) {
 
     // Aggiorna la visualizzazione dei mostri
     visualizzaMostri();
+    modificaTesto(nomeMostro,punteggioMostro)
 });
 
 // Funzione per visualizzare i mostri nel database
@@ -223,7 +224,16 @@ document.querySelector('form#richiesta').addEventListener('submit', function (ev
         risultatoDiv.textContent = "La difficoltà è " + difficolta;
 });
 
+//--------------------------------------------------------------------------------------------------------------
+function modificaTesto(nomeMostro,punteggioMostro) {
+    var contenutoHTML = document.getElementById('risultatoM').innerHTML;
+    console.log(contenutoHTML); // Questo stamperà "Contenuto esistente" nella console
+    
+    document.getElementById('risultatoM').innerHTML = nomeMostro + " Inserito con Successo con Pe = " + punteggioMostro;
 
+    
+    
+}
 
 
 //---------------------------------------------------------------------------------------------------------------
