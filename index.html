@@ -7,7 +7,9 @@
     <title>D&D calcolo difficoltà</title>
     <link rel="stylesheet" href="style.css">
     <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
-
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>     -->
 </head>
 
 <body>
@@ -46,9 +48,23 @@
     <input type="number" name="" id="PeMostro">
     <button type="submit">Carica nel database</button>
 </form>
-    
+    <div id="modifica_data">
+<form id="rimuovi" hidden>
+    <label for="NomeMostroDaRimuovere">Nome Mostro Da Rimuovere</label>
+    <input type="text" id="NomeMostroDaRimuovere">
+    <button type="submit">Rimuovi dal database</button>
+</form>
 
-    <ul id="lista_mostri"></ul>
+<form id="modifica" hidden >
+    <label for="NomeMostroDaModificare">Nome Mostro Da Modificare</label>
+    <input type="text" id="NomeMostroDaModificare">
+    <label for="NuovoPunteggioMostro">Nuovo PE Mostro</label>
+    <input type="number" id="NuovoPunteggioMostro">
+    <button type="submit">Modifica nel database</button>
+</form>
+</div>
+
+    <ul id="lista_mostri" ></ul>
 
     <script src="script.js"></script>
 </body>
