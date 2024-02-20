@@ -239,49 +239,49 @@ function modificaTesto(nomeMostro,punteggioMostro) {
 //---------------------------------------------------------------------------------------------------------------
 
 
-// Funzione per rimuovere un mostro dal database
-function rimuoviMostro(nomeMostro) {
-    delete mostri[nomeMostro];
-    // Salva il database aggiornato
-    salvaMostri();
-}
+// // Funzione per rimuovere un mostro dal database
+// function rimuoviMostro(nomeMostro) {
+//     delete mostri[nomeMostro];
+//     // Salva il database aggiornato
+//     salvaMostri();
+// }
 
-// Funzione per modificare il punteggio di un mostro nel database
-function modificaPunteggioMostro(nomeMostro, nuovoPunteggio) {
-    mostri[nomeMostro] = nuovoPunteggio;
-    // Salva il database aggiornato
-    salvaMostri();
-}
+// // Funzione per modificare il punteggio di un mostro nel database
+// function modificaPunteggioMostro(nomeMostro, nuovoPunteggio) {
+//     mostri[nomeMostro] = nuovoPunteggio;
+//     // Salva il database aggiornato
+//     salvaMostri();
+// }
 
-// Event listener per il form di rimozione del mostro
-document.getElementById('rimuovi').addEventListener('submit', function (event) {
-    event.preventDefault(); // Impedisce il ricaricamento della pagina
+// // Event listener per il form di rimozione del mostro
+// document.getElementById('rimuovi').addEventListener('submit', function (event) {
+//     event.preventDefault(); // Impedisce il ricaricamento della pagina
 
-    // Ottiene il nome del mostro da rimuovere
-    var nomeMostroDaRimuovere = document.getElementById('NomeMostroDaRimuovere').value;
+//     // Ottiene il nome del mostro da rimuovere
+//     var nomeMostroDaRimuovere = document.getElementById('NomeMostroDaRimuovere').value;
 
-    // Rimuove il mostro dal database
-    rimuoviMostro(nomeMostroDaRimuovere);
+//     // Rimuove il mostro dal database
+//     rimuoviMostro(nomeMostroDaRimuovere);
 
-    // Aggiorna la visualizzazione dei mostri
-    visualizzaMostri();
-});
+//     // Aggiorna la visualizzazione dei mostri
+//     visualizzaMostri();
+// });
 
-// Event listener per il form di modifica del punteggio del mostro
-document.getElementById('modifica').addEventListener('submit', function (event) {
-    event.preventDefault(); // Impedisce il ricaricamento della pagina
+// // Event listener per il form di modifica del punteggio del mostro
+// document.getElementById('modifica').addEventListener('submit', function (event) {
+//     event.preventDefault(); // Impedisce il ricaricamento della pagina
 
-    // Ottiene il nome del mostro da modificare
-    var nomeMostroDaModificare = document.getElementById('NomeMostroDaModificare').value;
-    // Ottiene il nuovo punteggio del mostro
-    var nuovoPunteggioMostro = parseInt(document.getElementById('NuovoPunteggioMostro').value);
+//     // Ottiene il nome del mostro da modificare
+//     var nomeMostroDaModificare = document.getElementById('NomeMostroDaModificare').value;
+//     // Ottiene il nuovo punteggio del mostro
+//     var nuovoPunteggioMostro = parseInt(document.getElementById('NuovoPunteggioMostro').value);
 
-    // Modifica il punteggio del mostro nel database
-    modificaPunteggioMostro(nomeMostroDaModificare, nuovoPunteggioMostro);
+//     // Modifica il punteggio del mostro nel database
+//     modificaPunteggioMostro(nomeMostroDaModificare, nuovoPunteggioMostro);
 
-    // Aggiorna la visualizzazione dei mostri
-    visualizzaMostri();
-});
+//     // Aggiorna la visualizzazione dei mostri
+//     visualizzaMostri();
+// });
 
 //---------------------------------------------------------------------------------------------------------
 
