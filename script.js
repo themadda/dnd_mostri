@@ -187,6 +187,7 @@ function calcolaPeM(numeroPG) {
     }
 
 console.log("Pe Per mostri tot: " + PEperMostri);
+    stampaPE(PEperMostri);
     return PEperMostri;
 }
 
@@ -226,15 +227,22 @@ document.querySelector('form#richiesta').addEventListener('submit', function (ev
 
 //--------------------------------------------------------------------------------------------------------------
 function modificaTesto(nomeMostro,punteggioMostro) {
-    var contenutoHTML = document.getElementById('risultatoM').innerHTML;
+
     console.log("sono dentro la funzione modificaTesto"); // Questo stamperà "Contenuto esistente" nella console
     
     document.getElementById('risultatoM').innerHTML = nomeMostro + " Inserito con Successo con Pe = " + punteggioMostro;
-
-    alert("Mostro inserito con successo!");
     
 }
 
+function stampaPE(PEperMostri){
+console.log("Guadagno di PE=" + PEperMostri);
+
+console.log("sono dentro la funzione stampaPE"); // Questo stamperà "Contenuto esistente" nella console
+
+document.getElementById('exp').innerHTML = "Esperienza Guadagnata dal fight: " + PEperMostri;
+
+
+}
 
 //---------------------------------------------------------------------------------------------------------------
 
