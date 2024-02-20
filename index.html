@@ -5,62 +5,162 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>D&D calcolo difficoltà</title>
-    <link rel="stylesheet" href="style.css">
     <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+
+
+
+    <style>
+        #richiesta select {
+            background-color: rgb(207, 201, 201);
+        }
+
+        body {
+            background-image: url("https://i.pinimg.com/originals/11/8e/95/118e950566483a03cdb816326b74eec7.jpg");
+            background-position: center;
+            background-size: cover;
+            font-family: "Montserrat", sans-serif;
+            color: white;
+            padding: 20px;
+        }
+
+        form {
+            width: 100%;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+            background-color: rgb(207, 201, 201);
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #b30000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #830101;
+        }
+
+        #risultati {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: rgb(207, 201, 201);
+        }
+
+        header {
+            text-align: center;
+            background-color: rgb(0, 0, 95);
+            color: antiquewhite;
+            padding-bottom: 1%;
+            padding-top: 1%;
+            margin-bottom: 1%;
+        }
+
+        header h1 {
+            font-size: 25px;
+        }
+
+        header h3 {
+            font-size: 20px;
+
+        }
+
+        select {
+            background-color: rgb(207, 201, 201);
+        }
+
+
+    </style>
+
+
+
+
 </head>
 
 <body>
+    <header>
 
-    <form id="richiesta">
-        <label for="nome_mostro1">Nome Del Primo Mostro</label>
-        <select id="nome_mostro1" required class="form-select form-select-sm" aria-label="Small select example"></select>
+        <h1>Calcolo del livello difficoltà e dell'Esperienza</h1>
+        <h3>In Dungeons & Dragons 5e</h3>
 
-        <label for="nome_mostro2">Nome Del Secondo Mostro</label>
-        <select id="nome_mostro2" class="form-select form-select-sm" aria-label="Small select example"></select>
+    </header>
+    <div id="main">
+        <div id="nomeDeiMostri" class="d-flex justify-content-start">
+            <form id="richiesta">
+                <label for="nome_mostro1">Nome Del Primo Mostro</label>
+                <select id="nome_mostro1" required class="form-select form-select-sm"
+                    aria-label="Small select example"></select>
 
-        <label for="nome_mostro3">Nome Del Terzo Mostro</label>
-        <select id="nome_mostro3"  class="form-select form-select-sm" aria-label="Small select example"></select>
+                <label for="nome_mostro2">Nome Del Secondo Mostro</label>
+                <select id="nome_mostro2" class="form-select form-select-sm" aria-label="Small select example"></select>
 
+                <label for="nome_mostro3">Nome Del Terzo Mostro</label>
+                <select id="nome_mostro3" class="form-select form-select-sm" aria-label="Small select example"></select>
+        </div>
+        <div id="numeroDeiMostri">
+            <label for="numero_mostri1">Quanti mostri del primo</label>
+            <input type="number" name="" id="numero_mostri1" required>
 
-        <label for="numero_mostri1">Quanti mostri del primo</label>
-        <input type="number" name="" id="numero_mostri1" required>
+            <label for="numero_mostri2">Quanti mostri del secondo</label>
+            <input type="number" name="" id="numero_mostri2">
 
-        <label for="numero_mostri2">Quanti mostri del secondo</label>
-        <input type="number" name="" id="numero_mostri2">
+            <label for="numero_mostri3">Quanti mostri del Terzo</label>
+            <input type="number" name="" id="numero_mostri3">
+        </div>
+        <div id="party">
+            <label for="livello_pg">Livello del party</label>
+            <input type="number" name="" id="livello_pg" required>
 
-        <label for="numero_mostri3">Quanti mostri del Terzo</label>
-        <input type="number" name="" id="numero_mostri3">
+            <label for="quanti_pg">Quanti siete?</label>
+            <input type="number" name="" id="quanti_pg" required>
+            <button type="submit">Invio</button>
+        </div>
+        </form>
+        <div id="risultati">
+            <div id="exp"></div>
+            <div id="risultato-difficolta"></div>
+        </div>
+        <div id="aggiunta">
+            <form id="Agg">
+                <label for="NomeMostro">Nome Mostro Da Agg</label>
+                <input type="text" id="NomeMostro" required>
+                <label for="PeMostro">PE Mostro</label>
+                <input type="number" name="" id="PeMostro" required>
+                <button type="submit">Carica nel database</button>
+                <h2 id="risultatoM"></h2>
+            </form>
+        </div>
 
-
-        <label for="livello_pg">Livello del party</label>
-        <input type="number" name="" id="livello_pg" required> 
-        
-        <label for="quanti_pg">Quanti siete?</label>
-        <input type="number" name="" id="quanti_pg" required>
-
-        <button type="submit">Invio</button>
-    </form>
-    <div id="exp"></div>
-    <div id="risultato-difficolta"></div>
-
-
-<form id="Agg">
-    <label for="NomeMostro">Nome Mostro Da Agg</label>
-    <input type="text" id="NomeMostro" required>
-    <label for="PeMostro">PE Mostro</label>
-    <input type="number" name="" id="PeMostro" required>
-    <button type="submit">Carica nel database</button>
-</form>
-
-
-<!-- <select id="select_mostri" class="form-select form-select-sm" aria-label="Small select example"></select> -->
-
-    <ul id="lista_mostri" hidden ></ul>
-    <h2 id="risultatoM"></h2>
-
+        <ul id="lista_mostri" hidden></ul>
+    </div>
     <script src="script.js"></script>
 </body>
 

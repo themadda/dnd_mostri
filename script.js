@@ -239,7 +239,7 @@ console.log("Guadagno di PE=" + PEperMostri);
 
 console.log("sono dentro la funzione stampaPE"); // Questo stamperà "Contenuto esistente" nella console
 
-document.getElementById('exp').innerHTML = "Esperienza Guadagnata dal fight: " + PEperMostri;
+document.getElementById('exp').innerHTML = "Esperienza Guadagnata dal fight: " + PEperMostri + "EXP";
 
 
 }
