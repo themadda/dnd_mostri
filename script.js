@@ -187,7 +187,7 @@ function calcolaPeM(numeroPG) {
     }
 
 console.log("Pe Per mostri tot: " + PEperMostri);
-    stampaPE(PEperMostri);
+    stampaPE(PEperMostri, numeroPG);
     return PEperMostri;
 }
 
@@ -234,12 +234,12 @@ function modificaTesto(nomeMostro,punteggioMostro) {
     
 }
 
-function stampaPE(PEperMostri){
+function stampaPE(PEperMostri, numeroPG){
 console.log("Guadagno di PE=" + PEperMostri);
 
 console.log("sono dentro la funzione stampaPE"); // Questo stamperà "Contenuto esistente" nella console
-
-document.getElementById('exp').innerHTML = "Esperienza Guadagnata dal fight: " + PEperMostri + "EXP";
+var calcoloPePg = PEperMostri/numeroPG;
+document.getElementById('exp').innerHTML = "Esperienza Guadagnata dal fight per PG (singolarmente): " + calcoloPePg + "EXP";
 
 
 }
